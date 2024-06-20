@@ -58,7 +58,7 @@ const AddMovie = () => {
     };
 
     try {
-      const response = await axios.post("http://localhost:3001/api/movies", {
+      const response = await axios.post("/api/movies", {
         image,
         name,
         year: parseInt(year),
