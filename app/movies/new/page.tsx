@@ -58,21 +58,24 @@ const AddMovie = () => {
     };
 
     try {
-      const response = await axios.post("/api/movies", {
-        image,
-        name,
-        year: parseInt(year),
-        details,
-        downloadLink: [downloadLinkObject],
-        trailer,
-        genre: genre.split(",").map((g) => g.trim()),
-        releaseDate,
-        runtime,
-        director,
-        rated,
-        type,
-        quality,
-      });
+      const response = await axios.post(
+        "https://flixnomad-app-backend-express.onrender.com/api/movies",
+        {
+          image,
+          name,
+          year: parseInt(year),
+          details,
+          downloadLink: [downloadLinkObject],
+          trailer,
+          genre: genre.split(",").map((g) => g.trim()),
+          releaseDate,
+          runtime,
+          director,
+          rated,
+          type,
+          quality,
+        }
+      );
 
       console.log(response.data);
     } catch (error) {
