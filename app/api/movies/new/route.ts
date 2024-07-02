@@ -15,7 +15,7 @@ export const GET = async (req: NextRequest) => {
         downloadLink: [
           {
             name: `720p`,
-            link: `https://example.com/download/movie${i + 1}_720p.mp4`,
+            link: `https://flixnomad.s3.eu-north-1.amazonaws.com/movies/Trigger.Warning.2024.480p.LOOPFLIX.mkv`,
           },
           {
             name: `1080p`,
@@ -23,13 +23,16 @@ export const GET = async (req: NextRequest) => {
           },
         ],
         genre: [`Genre ${i % 5}`, `Genre ${(i + 1) % 5}`], // Cycle through 5 genres
-        image: `https://flixnomad.s3.eu-north-1.amazonaws.com/photos/entrapment-1999.jpeg`,
+        image:
+          i % 2 === 0
+            ? `https://flixnomad.s3.eu-north-1.amazonaws.com/photos/trigger+warning+2024.jpeg`
+            : `https://flixnomad.s3.eu-north-1.amazonaws.com/photos/entrapment-1999.jpeg`,
         name: `Mock Movie Title ${i + 1}`,
-        quality: `HD`,
+        quality: `480p`,
         rated: `PG-${i % 13}`, // Generate a rating like PG-1, PG-2, etc.
         releaseDate: new Date().toISOString(),
         runtime: `1h ${90 + i}m`, // Different runtime for each movie
-        trailer: `https://example.com/trailers/movie${i + 1}.mp4`,
+        trailer: `Njx6KkInKao`,
         type: i % 2 === 0 ? "Movie" : "Series", // Alternate between "Movie" and "Series"
         year: 2020 + (i % 5), // Cycle through 5 years
       };
