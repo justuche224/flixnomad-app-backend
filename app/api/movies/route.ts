@@ -13,8 +13,9 @@ export const GET = async (req: NextRequest, res: NextResponse) => {
     parseInt(req.nextUrl.searchParams.get("year") as string) || undefined;
 
   const filter: any = {};
-  if (type) filter.type = type;
+  if (type) filter.type = { $regex: new RegExp(type, "i") }; // Case-insensitive search
   if (year) filter.year = year;
+  // console.log(filter);
 
   try {
     const movies = await Movie.find(filter)
