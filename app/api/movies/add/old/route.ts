@@ -26,6 +26,8 @@ export async function POST(req: NextRequest) {
   try {
     data = await req.json();
   } catch (error) {
+    console.log("Invalid request body");
+    
     return NextResponse.json(
       { message: "Invalid request body" },
       { status: 400 }
@@ -38,6 +40,8 @@ export async function POST(req: NextRequest) {
       !data[field] ||
       (Array.isArray(data[field]) && data[field].length === 0)
     ) {
+      console.log(`Missing required field: ${field}`);
+      
       return NextResponse.json(
         { message: `Missing required field: ${field}` },
         { status: 400 }
@@ -51,6 +55,8 @@ export async function POST(req: NextRequest) {
     const [day, month, year] = data.releaseDate.split(" / ").map(Number);
     formattedReleaseDate = new Date(year, month - 1, day).toISOString();
   } catch (error) {
+    console.log('Invalid release date format! it should be 01 / 02 / 2027');
+    
     return NextResponse.json(
       { message: "Invalid release date format! it should be 01 / 02 / 2027" },
       { status: 400 }

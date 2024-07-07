@@ -79,7 +79,7 @@ const AddMovie = () => {
       console.log(response.data);
       setSucces("Movie Added");
     } catch (error) {
-      setError("Failed to add movie");
+      setError(`Error adding movie: ${error}`);
       console.error(error);
     } finally {
       setLoading(false);
