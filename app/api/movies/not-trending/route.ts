@@ -5,7 +5,7 @@ import { NextRequest, NextResponse } from "next/server";
 export const GET = async (req: NextRequest, res: NextResponse) => {
   await connectToDB();
   try {
-    const trendingMovies = await Movie.find({ trending: "true" });
+    const trendingMovies = await Movie.find({ trending: "false" });
     return new NextResponse(JSON.stringify(trendingMovies), { status: 200 });
   } catch (err: any) {
     return new NextResponse(err.message, { status: 500 });

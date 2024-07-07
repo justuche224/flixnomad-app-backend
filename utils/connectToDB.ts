@@ -11,7 +11,9 @@ export const connectToDB = async () => {
     return;
   }
   try {
-    await mongoose.connect(uri!);
+    await mongoose.connect(uri!, {
+      dbName: "production", // Specify your database name here
+    });
 
     isConnected = true;
     console.log("MongoDB connected");

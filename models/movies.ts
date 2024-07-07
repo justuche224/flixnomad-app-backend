@@ -20,6 +20,7 @@ interface IMovie extends Document {
   type: string;
   quality: string;
   createdAt: Date;
+  trending: boolean;
 }
 
 const DownloadLinkSchema: Schema = new Schema({
@@ -41,6 +42,7 @@ const MovieSchema: Schema = new Schema({
   rated: { type: String, required: true },
   type: { type: String, required: true },
   quality: { type: String, required: true },
+  trending: { type: String, required: true },
   createdAt: { type: Date, default: Date.now },
 });
 
